@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
+  get 'estimations/index'
+
+  get 'boards/index'
   get 'home/index'
+  get 'home/mainpage'
+  get '/modal' => 'home#modal'
   root :to => 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

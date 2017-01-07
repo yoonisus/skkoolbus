@@ -22,6 +22,7 @@ h6 {
 }
 
 .topnav {
+    font-weight: 100;
     font-size: 18px;
     text-align: center;
 }
@@ -135,6 +136,47 @@ h6 {
     float: right;
     margin-top: 0;
 }
+
+.timetable_box{
+    margin-top: 80px;
+    text-align: center;
+    box-shadow: 3;
+}
+
+.boards_box{
+    display: inline-block;
+    width:315px;
+    height: 150px;
+    -webkit-border-radius: 20px;
+       -moz-border-radius: 20px;
+            border-radius: 20px;
+    border:2px solid grey;
+    background-color:white;
+    margin-bottom: 10px;
+}
+
+.boards_box2{
+    display: inline-block;
+    width: 315px;
+    height: 250px;
+    -webkit-border-radius: 20px;
+       -moz-border-radius: 20px;
+            border-radius: 20px;
+    border:2px solid grey;
+    background-color:white;
+}
+
+.main_track{
+    width: 70%;
+    height: 80%;
+    -webkit-border-radius: 80px;
+    -moz-border-radius: 80px;
+    border-radius: 80px;
+    border: 2px solid grey;
+    background-color: white;
+    margin: 28% auto 25% auto;
+}
+
 
 @media(max-width:1199px) {
     ul.banner-social-buttons {
