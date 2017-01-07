@@ -1,0 +1,146 @@
+<br>
+<br>
+<Br>
+<br>
+
+<div class="container">
+  <h2>셔틀버스 위치 탐색기</h2>
+</div>
+
+  <div class="row text-center">
+      <a href="#" class="btn btn-lg btn-success" data-toggle="modal" data-target="#basicModal">자세히 보기</a>
+  </div>
+
+<div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Basic Modal</h4>
+      </div>
+      <div class="modal-body">
+        <h3>혜화역 1번출구</h3>
+        
+      <div class="container">
+
+
+          <div class="col-md-6 col-sm-6">
+            <div class="panel-group wrap" id="accordion" role="tablist" aria-multiselectable="true">
+              <div class="panel">
+                <div class="panel-heading" role="tab" id="headingOne">
+                  <h4 class="panel-title">
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                  경영관까지는?
+                </a>
+              </h4>
+                </div>
+                <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                  <div class="panel-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+                  </div>
+                </div>
+              </div>
+              <!-- end of panel -->
+        
+              <div class="panel">
+                <div class="panel-heading" role="tab" id="headingTwo">
+                  <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                  국제관까지는?
+                </a>
+              </h4>
+                </div>
+                <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                  <div class="panel-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+                  </div>
+                </div>
+              </div>
+              <!-- end of panel -->
+        
+              <div class="panel">
+                <div class="panel-heading" role="tab" id="headingThree">
+                  <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                  수선관까지는?
+                </a>
+              </h4>
+                </div>
+                <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                  <div class="panel-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+                  </div>
+                </div>
+              </div>
+              <!-- end of panel -->
+        
+              <div class="panel">
+                <div class="panel-heading" role="tab" id="headingFour">
+                  <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                  경제관까지는?
+                </a>
+              </h4>
+                </div>
+                <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                  <div class="panel-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+                  </div>
+                </div>
+              </div>
+              <!-- end of panel -->
+
+              <div class="panel">
+                <div class="panel-heading" role="tab" id="headingFive">
+                  <h4 class="panel-title">
+                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                  인문관까지는?
+                </a>
+              </h4>
+                </div>
+                <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                  <div class="panel-body">
+                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch.
+                  </div>
+                </div>
+              </div>
+              <!-- end of panel -->
+
+        
+            </div>
+            <!-- end of #accordion -->
+        
+          </div>
+          <!-- end of wrap -->
+        
+        </div>
+        <!-- end of container -->
+        
+        
+        
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<p class="p">Served by Likelion@skku <a href="http://www.likelion.net/" target="_blank">성균관대학교 멋쟁이사자처럼</a>.</p>
+
+
+<script>
+    
+$(document).ready(function() {
+  $('.collapse.in').prev('.panel-heading').addClass('active');
+  $('#accordion, #bs-collapse')
+    .on('show.bs.collapse', function(a) {
+      $(a.target).prev('.panel-heading').addClass('active');
+    })
+    .on('hide.bs.collapse', function(a) {
+      $(a.target).prev('.panel-heading').removeClass('active');
+    });
+});
+    
+</script>
