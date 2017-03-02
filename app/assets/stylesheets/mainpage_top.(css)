@@ -68,6 +68,78 @@ ul li{
     z-index: 10;
 }
 
+/*station_short start*/
+
+.bus_line{
+    margin-top: 90px;
+    width: 300px;
+    height: 380px;
+    border: 2px solid #c4c5c7;
+    border-radius: 50px;
+    display: inline-block;
+    z-index: 15;
+    box-sizing: border-box; 
+}
+
+.bus_station_section1{
+    clear: both;
+    width: 250px;
+    margin-left: 20px;
+    margin-top: -25px;
+}
+
+.bus_station_section2{
+    clear: both;
+    float: left;
+    margin-top: 50px;
+    width: 337px;
+    margin-left: -20px;
+}
+
+.bus_station_section3{
+    clear: both;
+    float: left;
+    margin-top: 15px;
+    width: 337px;
+    margin-left: -20px;
+}
+
+.bus_station_section4{
+    clear: both;
+    float: left;
+    margin-top: 15px;
+    width: 337px;
+    margin-left: -20px;
+}
+
+.bus_station_section5{
+    clear: both;
+    float: left;
+    width: 337px;
+    margin-left: -20px;
+    margin-top: 15px;
+}
+
+.bus_station_section6{
+    clear: both;
+    float: left;
+    width: 337px;
+    margin-left: -20px;
+    margin-top: 15px;
+}
+
+.bus_station_section7{
+    clear: both;
+    float: left;
+    width: 250px;
+    margin-top: 30px;
+    margin-left: 20px;
+
+
+/*station_short end*/
+
+/* station_original_height
+
 .bus_line{
     margin-top: 90px;
     width: 300px;
@@ -78,7 +150,6 @@ ul li{
     z-index: 15;
     box-sizing: border-box; 
 }
-
 
 .bus_station_section1{
     clear: both;
@@ -135,6 +206,8 @@ ul li{
     margin-left: 20px;
 
 }
+
+*/
 
 .s1{
     float: left;
@@ -368,25 +441,79 @@ ul li{
     clear: both;
     margin-top: 90px;
     width: 300px;
-    height: 400px;
+    height: 380px;
     /*border: 2px solid red;*/
     border-radius: 50px;
     display: inline-block;
     box-sizing: border-box;
 }
 
+/*info_short start*/
+
 .bus_info_section1{
     clear: both;
-    margin-top: 36px;
+    margin-top: 50px;
     text-align: center;
+    position: relative;
+    z-index: 60;
 }
 
 .bus_info_section2{
-    margin-top: -25px;
+    margin-top: -15px;
     float: left;
     position: relative;
     width:300px;
     box-sizing: border-box; 
+    z-index: 53;
+}
+
+.bus_info_section3{
+    clear:both;
+    margin-top: 50px;
+    float: left;
+    position: relative;
+    width:300px;
+    box-sizing: border-box; 
+}
+
+.bus_info_section4{
+    clear:both;
+    margin-top: 50px;
+    float: left;
+    position: relative;
+    width: 300px;
+    box-sizing: border-box; 
+}
+
+.bus_info_section5{
+    clear: both;
+    float: left;
+    margin-top: 87px;
+    text-align: center;
+    position: relative;
+    width: 300px;
+    box-sizing: border-box; 
+}
+
+/*info_short end*/
+
+
+/*info_orininal
+.bus_info_section1{
+    clear: both;
+    margin-top: 36px;
+    text-align: center;
+    position: relative;
+    z-index: 60;
+}
+
+.bus_info_section2{
+    margin-top: -15px;
+    float: left;
+    position: relative;
+    width:300px;
+    box-sizing: border-box; 
+    z-index: 53;
 }
 
 .bus_info_section3{
@@ -410,12 +537,14 @@ ul li{
 .bus_info_section5{
     clear: both;
     float: left;
-    margin-top: 75px;
+    margin-top: 65px;
     text-align: center;
     position: relative;
     width: 300px;
     box-sizing: border-box; 
 }
+
+*/
 
 .bus_info_name1{
     width: 90px;
@@ -470,6 +599,7 @@ ul li{
 }
 
 
+
 .info_name{
     margin: 0px;
     font-size: 12px;
@@ -501,7 +631,7 @@ ul li{
     height: 70px;
     position: relative;
     float: left;
-    top: -50px;
+    top: -60px;
     left: 250px;
 }
 

@@ -8,7 +8,7 @@
           <a href="/main">
             <%= image_tag("skkbus_ic_arrow_back.png", class: "arrow_back") %></a>
         </div>
-        <a class="navbar-brand topnav" style="font-family: Nunito; margin-left:-30px;" href="/home/mainpage_top" ><span style="font-family: Nunito; font-weight: 500; font-size: 16px;">인사캠 셔틀 운영시간 보기</span></a>
+        <a class="navbar-brand topnav" style="font-family: Nunito; margin-left:-30px;" href="/main" ><span style="font-family: Nunito; font-weight: 500; font-size: 16px;">인사캠 셔틀 운영시간 보기</span></a>
       </div>
       <!-- /.navbar-collapse -->
     </div>
@@ -22,7 +22,7 @@
     <div class="boards_box2">
         <div class="container" style="margin-top: 5px;">
           <div class="board_header">
-            <h4><img class="schedule_bus" src="/img/skkbus_ic_schedule_bus.png">운영시간</h4>
+            <h4><%= image_tag 'skkbus_ic_schedule_bus.png', class: 'schedule_bus' %>운영시간</h4>
           </div>
         	<table class="table_long">
                 <!--<thead>-->
@@ -86,20 +86,24 @@
     <div class="boards_box_1">
         <div class="container" style="margin-top: 5px; padding-right: 0px;">
           <div class="board_header">
-            <h4><img class="schedule_bus" src="/img/skkbus_ic_schedule_bus.png">탑승장소</h4>
+            <h4><%= image_tag 'skkbus_ic_schedule_bus.png', class: 'schedule_bus' %>탑승장소</h4>
           </div>
           <hr class="station_line">
           <div class="dongurami_1" style="z-index: 15;">
-              <%= image_tag("/img/skkbus_ic_left.png", class: "img_class") %>          </div>
-          <div class="dongurami_2" style="z-index: 15;">
-              <%= image_tag("/img/skkbus_ic_left.png", class: "img_class") %>
+            <%= image_tag 'skkbus_ic_left.png', class: 'img_class' %>
           </div>
           <div class="dongurami_2" style="z-index: 15;">
-              <%= image_tag("/img/skkbus_ic_left.png", class: "img_class") %>          </div>
+            <%= image_tag 'skkbus_ic_left.png', class: 'img_class' %>
+          </div>
           <div class="dongurami_2" style="z-index: 15;">
-              <%= image_tag("/img/skkbus_ic_left.png", class: "img_class") %>          </div>
+            <%= image_tag 'skkbus_ic_left.png', class: 'img_class' %>
+          </div>
           <div class="dongurami_2" style="z-index: 15;">
-              <%= image_tag("/img/skkbus_ic_left.png", class: "img_class") %>          </div>
+            <%= image_tag 'skkbus_ic_left.png', class: 'img_class' %>
+          </div>
+          <div class="dongurami_2" style="z-index: 15;">
+            <%= image_tag 'skkbus_ic_left.png', class: 'img_class' %>
+          </div>
           <div class="word_chunk font_size_smaller"><p class="word_line_1st">혜화역</p> <p class="word_line_2nd">1번출구</p></div>
           <div class="word_chunk_2 font_size_smaller"><p class="word_line_1st">맥도날드 앞</p> </div>
           <div class="word_chunk_3 font_size_smaller"><p class="word_line_1st">정문</p> </div>        

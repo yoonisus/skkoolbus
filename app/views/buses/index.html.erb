@@ -1,14 +1,49 @@
 <!-- shuttle_walk를 조금 더 짜보자 // 국제관에서 -> 다른 건물 // 농구장 -> 국제관 -->
-<link rel="stylesheet" type="text/css" href="hackaday.css">
 
+<head>
+    <link rel="stylesheet" type="text/css" href="hackaday.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+
+<!-- 운행종료 시작 -->
+<!-- Trigger/Open The Modal -->
+<button id="myBtn2"></button>
+
+<!-- The Modal -->
+<div id="myModal2" class="modal2">
+
+  <!-- Modal content -->
+  <div class="modal-content2">
+    <div class="modal-header2">
+      <span class="close2">&times;</span>
+      <h2>Modal Header</h2>
+    </div>
+    <div class="modal-body2">
+      <p>Some text in the Modal Body</p>
+      <p>Some other text...</p>
+    </div>
+    <div class="modal-footer2">
+      <h3>Modal Footer</h3>
+    </div>
+  </div>
+
+</div>
+
+
+
+<!-- 운행종료 끝 -->
+
+  
 <div class="container">
   <!-- Navigation_Top -->
   <nav class="navbar navbar-default navbar-fixed-top topnav" role="navigation">
     <div class="container topnav">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <div class="nav_ic_left">
-          <a href="/info"><%= image_tag 'skkbus_ic_info.png' %></a>
+        <div onclick="openNav()" class="nav_ic_left ">
+          <%= image_tag 'skkbus_ic_info.png' %>
         </div>
         <a class="navbar-brand topnav" style="font-family: Nunito; font-weight: 100;" href="/main"><span style="font-family: Nunito; font-weight: bold; text-shadow: 0.6px 0px 0px">SKK</span>OOL BUS</a>
         <div class="nav_ic_right">
@@ -24,9 +59,34 @@
 
 
 <div class="bus_all" style="">
+  
+    <!-- info menu area -->
+  <div id="mySidenav" class="sidenav" onclick="closeNav()">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <div class="info_message">
+      <div class="info_title">
+        <h1>SKKOOL BUS<br>APP</h1>
+        <div class="title_line"></div>
+        <!--<p>스쿨버스는 성균관대학교 인문사회캠퍼스<br>학생들의 편리한 등교를 위한 애플리케이션입니다</p>-->
+      </div>
+      <div class="info_howto">
+        <h4>How to use</h4>
+        <p>1.운행중인 셔틀버스의 위치와 도착시간을 확인하세요!<br>&nbsp;&nbsp;(새로고침 버튼을 누르면 정보가 업데이트 됩니다)</p>
+        <p>2.‘자세히 보기’를 누르면 해당 정류장에서 각 건물까지<br>&nbsp;&nbsp;<span style="color:#ffc83d">예상 소요시간</span>을 알 수 있습니다.</p>
+        <p>3.우측 상단 버튼을 누르면 운영시간표가 나타납니다</p>
+      </div>
+      <div class="info_contact">
+        <h4>Contact</h4>
+        <p>skkoolbus@gmail.com<br>Developed by 멋쟁이 사자처럼 4기</p>
+        <p><span class="main_developers" style="font-size: 13px;">고윤서 김정환 이종원 전태훈 홍주상</span></p>
+        <p><span class="sub_developers" style="font-size: 11px; color: black;">백성흠 안지영</span></p>
+      </div>
+    </div>
+  </div>
   <div class="bus_line_container">
     <div class="bus_line">
       <div class="bus_station_section1">
+
         <div class="s2 bus_dep1">
           <div class="bus_ic_dep">
             <% if @carNumber[0].present? and @kind[0] == "3" %>
@@ -35,7 +95,8 @@
             <% end %>
           </div>
         </div>
-        <div class="s1 bus_station_sequence1">
+        <div class="s1 bus_station_sequence1 clickable">
+          <a data-toggle="modal" data-target="#Basketball_court">
           <%= image_tag 'skkbus_ic_left.png', class: 'sequence1_arrow' %>
           <div class="bus_ic_station">
             <% if @carNumber[0].present? and @kind[0] == "2" %>
@@ -43,6 +104,7 @@
             <span id="#" class="bus_number1"><%= @carNumber[0] %></span>
             <% end %>
           </div>
+          </a>
         </div>
         <div class="s2 bus_dep10">
           <div class="bus_ic_dep">
@@ -54,7 +116,8 @@
         </div>
       </div>
       <div class="bus_station_section2">
-        <div class="s1 bus_station_sequence2">
+        <a data-toggle="modal" data-target="#StudentHall">
+        <div class="s1 bus_station_sequence2 clickable">
           <%= image_tag 'skkbus_ic_left.png' , class: 'sequence10_arrow' %>
           <div class="bus_ic_station">
             <% if @carNumber[1].present? and @kind[1] == "2" %>
@@ -63,7 +126,9 @@
             <% end %>
           </div>
         </div>
-        <div class="s1 bus_station_sequence8">
+        </a>
+        <div class="s1 bus_station_sequence10 clickable">
+          <a data-toggle="modal" data-target="#Sixhundred_Anniversary">
           <%= image_tag 'skkbus_ic_left.png' , class: 'sequence2_arrow' %>
           <div class="bus_ic_station">
             <% if @carNumber[9].present? and @kind[9] == "2" %>
@@ -71,6 +136,7 @@
             <span id="#" class="bus_number1"><%= @carNumber[9] %></span>
             <% end %>
           </div>
+          </a>
         </div>
       </div>
       <div class="bus_station_section3">
@@ -92,7 +158,8 @@
         </div>
       </div>
       <div class="bus_station_section4">
-        <div class="s1 bus_station_sequence3">
+        <div class="s1 bus_station_sequence3 clickable">
+          <a data-toggle="modal" data-target="#Exit">
           <%= image_tag 'skkbus_ic_left.png' , class: 'sequence10_arrow' %>
           <div class="bus_ic_station">
             <% if @carNumber[2].present? and @kind[2] == "2" %>
@@ -100,14 +167,17 @@
             <span id="#" class="bus_number1"><%= @carNumber[2] %></span>
             <% end %>
           </div>
+          </a>
         </div>
-        <div class="s1 bus_station_sequence9">
+        <div class="s1 bus_station_sequence9 clickable">
+          <a data-toggle="modal" data-target="#Entrance">
           <%= image_tag 'skkbus_ic_left.png' , class: 'sequence2_arrow' %>
           <div class="bus_ic_station">
             <% if @carNumber[8].present? and @kind[8] == "2" %>
             <%= image_tag 'skkbus_ic_bus3.png' %>
             <span id="#" class="bus_number1"><%= @carNumber[8] %></span>
             <% end %>
+            </a>
           </div>
         </div>
       </div>
@@ -130,7 +200,8 @@
         </div>
       </div>
       <div class="bus_station_section6">
-        <div class="s1 bus_station_sequence4">
+        <div class="s1 bus_station_sequence4 clickable">
+          <a data-toggle="modal" data-target="#HyehwaRottery">
           <%= image_tag 'skkbus_ic_left.png', class: 'sequence10_arrow' %>
           <div class="bus_ic_station">
             <% if @carNumber[3].present? and @kind[3] == "2" %>
@@ -138,8 +209,10 @@
             <span id="#" class="bus_number1"><%= @carNumber[3] %></span>
             <% end %>
           </div>
+          </a>
         </div>
-        <div class="s1 bus_station_sequence10">
+        <div class="s1 bus_station_sequence8 clickable">
+          <a data-toggle="modal" data-target="#McDonald">
           <%= image_tag 'skkbus_ic_left.png' , class: 'sequence2_arrow' %>
           <div class="bus_ic_station">
             <% if @carNumber[7].present? and @kind[7] == "2" %>
@@ -147,6 +220,7 @@
             <span id="#" class="bus_number1"><%= @carNumber[7] %></span>
             <% end %>
           </div>
+          </a>
         </div>
       </div>
       <div class="bus_station_section7">
@@ -161,7 +235,8 @@
             <% end %>
           </div>
         </div>
-        <div class="s1 bus_station_sequence6">
+        <div class="s1 bus_station_sequence6 clickable">
+          <a data-toggle="modal" data-target="#HyehwaStation">
           <%= image_tag 'skkbus_ic_left.png' , class: 'sequence6_arrow' %>
           <div class="bus_ic_station">
             <% if @carNumber[5].present? and @kind[5] == "2" %>
@@ -169,6 +244,7 @@
                 <span id="#" class="bus_number1"><%= @carNumber[5] %></span>
             <% end %>
           </div>
+          </a>
         </div>
         <div class="s2 bus_dep6">
           <div class="bus_ic_dep">
@@ -183,69 +259,84 @@
         </div>
       </div>
     </div>
+    
   </div>
-
-
-
   <div class="bus_info_container">
     <div class="bus_info">
       <div class="bus_info_section1">
-        <div class="bus_info_name1">
-          <p id="#" class="info_name">농구장 앞(하차)</p>
-          <p id="#" class="info_arrival"><%= @expect[0] %>분 후 도착</p>
-          <div class="info_detail"><p><a data-toggle="modal" data-target="#Basketball_court">자세히보기</a></p></div>
+        <div class="bus_info_name1 clickable">
+          <a data-toggle="modal" data-target="#Basketball_court">
+            <p id="#" class="info_name">농구장 앞(하차)</p>
+            <p id="#" class="info_arrival"><%= @expect[0] %>분 후 도착</p>
+            <div class="info_detail"><p>자세히보기</p></div>
+          </a>
         </div>
       </div>
       <div class="bus_info_section2">
-        <div class="bus_info_name2">
-          <p id="#" class="info_name">학생회관 앞</p>
-          <p id="#" class="info_arrival"><%= @expect[1] %>분 후 도착</p>
-          <div class="info_detail"><p><a data-toggle="modal" data-target="#StudentHall">자세히보기</a></p></div>
-        </div>
-        <div class="bus_info_name10">
-          <p id="#" class="info_name">600주년 기념관</p>
-          <p id="#" class="info_arrival"><%= @expect[9] %>분 후 도착</p>
-          <div class="info_detail"><p><a data-toggle="modal" data-target="#Sixhundred_Anniversary">자세히보기</a></p></div>
-        </div>
+          <div class="bus_info_name2 clickable">
+            <a data-toggle="modal" data-target="#StudentHall">
+              <p id="#" class="info_name">학생회관 앞</p>
+              <p id="#" class="info_arrival"><%= @expect[1] %>분 후 도착</p>
+              <div class="info_detail"><p>자세히보기</p></div>
+            </a>
+          </div>
+          <div class="bus_info_name10 clickable">
+            <a data-toggle="modal" data-target="#Sixhundred_Anniversary">
+            <p id="#" class="info_name">600주년 기념관</p>
+            <p id="#" class="info_arrival"><%= @expect[9] %>분 후 도착</p>
+            <div class="info_detail"><p>자세히보기</p></div>
+            </a>
+          </div>
       </div>
       <div class="bus_info_section3">
-        <div class="bus_info_name3">
-          <p id="#" class="info_name">정문(하교)</p>
-          <p id="#" class="info_arrival"><%= @expect[2] %>분 후 도착</p>
-          <div class="info_detail"><p><a data-toggle="modal" data-target="#Exit">자세히보기</a></p></div>
-        </div>
-        <div class="bus_info_name9">
-          <p id="#" class="info_name">정문(등교)</p>
-          <p id="#" class="info_arrival"><%= @expect[8] %>분 후 도착</p>
-          <div class="info_detail"><p><a data-toggle="modal" data-target="#Entrance">자세히보기</a></p></div>
-        </div>
+          <div class="bus_info_name3 clickable">
+            <a data-toggle="modal" data-target="#Exit">
+              <p id="#" class="info_name">정문(하교)</p>
+              <p id="#" class="info_arrival"><%= @expect[2] %>분 후 도착</p>
+              <div class="info_detail"><p>자세히보기</p></div>
+            </a>
+          </div>
+          <div class="bus_info_name9 clickable">
+            <a data-toggle="modal" data-target="#Entrance">
+              <p id="#" class="info_name">정문(등교)</p>
+              <p id="#" class="info_arrival"><%= @expect[8] %>분 후 도착</p>
+              <div class="info_detail"><p>자세히보기</p></div>
+            </a>
+          </div>
       </div>
       <div class="bus_info_section4">
-        <div class="bus_info_name4">
-          <p id="#" class="info_name">혜화로터리</p>
-          <p id="#" class="info_arrival"><%= @expect[4] %>분 후 도착</p>
-          <div class="info_detail"><p><a data-toggle="modal" data-target="#HyehwaRottery">자세히보기</a></p></div>
-        </div>
-        <div class="bus_info_name8">
-          <p id="#" class="info_name">맥도날드 앞</p>
-          <p id="#" class="info_arrival"><%= @expect[7] %>분 후 도착</p>
-          <div class="info_detail"><p><a data-toggle="modal" data-target="#McDonald">자세히보기</a></p></div>
-        </div>
+          <div class="bus_info_name4 clickable">
+            <a data-toggle="modal" data-target="#HyehwaRottery">
+              <p id="#" class="info_name">혜화로터리</p>
+              <p id="#" class="info_arrival"><%= @expect[4] %>분 후 도착</p>
+              <div class="info_detail"><p>자세히보기</p></div>
+            </a>
+          </div>
+          <div class="bus_info_name8 clickable">
+            <a data-toggle="modal" data-target="#McDonald">
+              <p id="#" class="info_name">맥도날드 앞</p>
+              <p id="#" class="info_arrival"><%= @expect[7] %>분 후 도착</p>
+              <div class="info_detail"><p>자세히보기</p></div>
+            </a>
+          </div>
       </div>
-      <div class="bus_info_section5">
-        <div class="bus_info_name6">
-          <p id="#" class="info_name">혜화역(승차)</p>
-          <p id="#" class="info_arrival"><%= @expect[5] %>분 후 도착</p>
-          <div class="info_detail"><p><a data-toggle="modal" data-target="#HyehwaStation">자세히보기</a></p></div>
+        <div class="bus_info_section5 clickable">
+          <div class="bus_info_name6">
+            <a data-toggle="modal" data-target="#HyehwaStation">
+              <p id="#" class="info_name">혜화역(승차)</p>
+              <p id="#" class="info_arrival"><%= @expect[5] %>분 후 도착</p>
+              <div class="info_detail"><p>자세히보기</p></div>
+            </a>
+          </div>
         </div>
-      </div>
-      <div class="button_refresh">
+      <div class="button_refresh hvr-push clickable">
         <a href="/"><%= image_tag 'skkbus_ic_refresh.png' %></a>
       </div>
     </div>
-
   </div>
+  
 </div>
+
 
 
 
@@ -267,11 +358,11 @@
   <div class="modal-dialog">
     <div class="modal-content">
          <div class="modal-header" id="no_underline" id="no_underline">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="close_size">&times;</span></button>
         <h4 class="modal-title joosang_left">혜화역(승차장)</h4>
       </div>
       <div class="modal-body modal-body-top">
-        
+           
         <!-- 모달 디폴트값 시작 -->
         <br>
         <span class="first_bus"><span class="n_minute_later"><%= @expect[5] %>분 후 도착</span>(1st bus)</span><br>
@@ -289,15 +380,15 @@
       <div class="panel panel1_0">
         
         <!-- 모달 안 값 시작 -->
-         <div class="modal_panel_component_left">1. 셔틀 <%#= @h_maeul[0] %>분 + 걸어서 <%#= @h_maeul_walk[0] %>분</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">1. 셔틀 <%#= @h_maeul[0] %>분 + 걸어서 <%#= @h_maeul_walk[0] %>분</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
          <br>
-         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약 <strong><%= @h_taxi[0] %></strong>분</div>     
+         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약<strong><%= @h_taxi[0] %></strong>분</div>     
          <br>
-         <div class="modal_panel_component_left">3. 마을버스 종로08 <%= @h_maeul[0] %>분 + 걸어서 <%= @h_maeul_walk[0] %> 분</div> <div class="modal_panel_component_right">약 <strong><%= @h_maeul[0] + @h_maeul_walk[0] %></strong>분</div>                         
+         <div class="modal_panel_component_left">3. 마을버스 종로08 <%= @h_maeul[0] %>분 + 걸어서 <%= @h_maeul_walk[0] %>분</div> <div class="modal_panel_component_right">약<strong><%= @h_maeul[0] + @h_maeul_walk[0] %></strong>분</div>                         
          <br>
-         <div class="modal_panel_component_left">4. 뛰어서</div> <div class="modal_panel_component_right">약 <strong><%= @h_run[0] %></strong>분</div>
+         <div class="modal_panel_component_left">4. 뛰어서</div> <div class="modal_panel_component_right">약<strong><%= @h_run[0] %></strong>분</div>
          <br>
-         <div class="modal_panel_component_left">5. 걸어서</div> <div class="modal_panel_component_right">약 <strong><%= @h_walk[0] %></strong>분</div>
+         <div class="modal_panel_component_left">5. 걸어서</div> <div class="modal_panel_component_right">약<strong><%= @h_walk[0] %></strong>분</div>
         <!-- 모달 안 값 끝 -->
         
       </div>
@@ -305,15 +396,15 @@
       <div class="panel panel2_0">
 
         <!-- 모달 안 값 시작 -->
-         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
          <br>
-         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약 <strong><%= @h_taxi[1] %></strong>분</div>     
+         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약<strong><%= @h_taxi[1] %></strong>분</div>     
          <br>
-         <div class="modal_panel_component_left">3. 마을버스 종로08 <%= @h_maeul[1] %>분 + 걸어서 <%= @h_maeul_walk[1] %> 분</div> <div class="modal_panel_component_right">약 <strong><%= @h_maeul[1] + @h_maeul_walk[1] %></strong>분</div>
+         <div class="modal_panel_component_left">3. 마을버스 종로08 <%= @h_maeul[1] %>분 + 걸어서 <%= @h_maeul_walk[1] %> 분</div> <div class="modal_panel_component_right">약<strong><%= @h_maeul[1] + @h_maeul_walk[1] %></strong>분</div>
          <br>
-         <div class="modal_panel_component_left">4. 뛰어서</div> <div class="modal_panel_component_right">약 <strong><%= @h_run[1] %></strong>분</div>
+         <div class="modal_panel_component_left">4. 뛰어서</div> <div class="modal_panel_component_right">약<strong><%= @h_run[1] %></strong>분</div>
          <br>
-         <div class="modal_panel_component_left">5. 걸어서</div> <div class="modal_panel_component_right">약 <strong><%= @h_walk[1] %></strong>분</div>
+         <div class="modal_panel_component_left">5. 걸어서</div> <div class="modal_panel_component_right">약<strong><%= @h_walk[1] %></strong>분</div>
         <!-- 모달 안 값 끝 -->
         
       </div>
@@ -321,15 +412,15 @@
       <div class="panel panel3_0"> 
       
         <!-- 모달 안 값 시작 -->
-         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
          <br>
-         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약 <strong><%= @h_taxi[2] %></strong>분</div>     
+         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약<strong><%= @h_taxi[2] %></strong>분</div>     
          <br>
-         <div class="modal_panel_component_left">3. 마을버스 종로08 <%= @h_maeul[2] %>분 + 걸어서 <%= @h_maeul_walk[2] %> 분</div> <div class="modal_panel_component_right">약 <strong><%= @h_maeul[2] + @h_maeul_walk[2] %></strong>분</div>
+         <div class="modal_panel_component_left">3. 마을버스 종로08 <%= @h_maeul[2] %>분 + 걸어서 <%= @h_maeul_walk[2] %> 분</div> <div class="modal_panel_component_right">약<strong><%= @h_maeul[2] + @h_maeul_walk[2] %></strong>분</div>
          <br>
-         <div class="modal_panel_component_left">4. 뛰어서</div> <div class="modal_panel_component_right">약 <strong><%= @h_run[2] %></strong>분</div>
+         <div class="modal_panel_component_left">4. 뛰어서</div> <div class="modal_panel_component_right">약<strong><%= @h_run[2] %></strong>분</div>
          <br>
-         <div class="modal_panel_component_left">5. 걸어서</div> <div class="modal_panel_component_right">약 <strong><%= @h_walk[2] %></strong>분</div>
+         <div class="modal_panel_component_left">5. 걸어서</div> <div class="modal_panel_component_right">약<strong><%= @h_walk[2] %></strong>분</div>
         <!-- 모달 안 값 끝 -->
       
       </div>
@@ -337,15 +428,15 @@
       <div class="panel panel4_0">
         
         <!-- 모달 안 값 시작 -->
-         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
          <br>
-         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약 <strong><%= @h_taxi[3] %></strong>분</div>     
+         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약<strong><%= @h_taxi[3] %></strong>분</div>     
          <br>
-         <div class="modal_panel_component_left">3. 마을버스 종로08 <%= @h_maeul[3] %>분 + 걸어서 <%= @h_maeul_walk[3] %> 분</div> <div class="modal_panel_component_right">약 <strong><%= @h_maeul[3] + @h_maeul_walk[3] %></strong>분</div>
+         <div class="modal_panel_component_left">3. 마을버스 종로08 <%= @h_maeul[3] %>분 + 걸어서 <%= @h_maeul_walk[3] %> 분</div> <div class="modal_panel_component_right">약<strong><%= @h_maeul[3] + @h_maeul_walk[3] %></strong>분</div>
          <br>
-         <div class="modal_panel_component_left">4. 뛰어서</div> <div class="modal_panel_component_right">약 <strong><%= @h_run[3] %></strong>분</div>
+         <div class="modal_panel_component_left">4. 뛰어서</div> <div class="modal_panel_component_right">약<strong><%= @h_run[3] %></strong>분</div>
          <br>
-         <div class="modal_panel_component_left">5. 걸어서</div> <div class="modal_panel_component_right">약 <strong><%= @h_walk[3] %></strong>분</div>
+         <div class="modal_panel_component_left">5. 걸어서</div> <div class="modal_panel_component_right">약<strong><%= @h_walk[3] %></strong>분</div>
         <!-- 모달 안 값 끝 -->
         
       </div>
@@ -377,7 +468,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
          <div class="modal-header" id="no_underline">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="close_size">&times;</span></button>
         <h4 class="modal-title joosang_left">맥도날드 앞</h4>
       </div>
       <div class="modal-body modal-body-top">
@@ -400,13 +491,13 @@
       <div class="panel panel1_1">
         
         <!-- 모달 안 값 시작 -->
-         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
          <br>
-         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약 <strong><%= @m_taxi[0] %></strong>분</div>     
+         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약<strong><%= @m_taxi[0] %></strong>분</div>     
          <br>
-         <div class="modal_panel_component_left">3. 뛰어서</div> <div class="modal_panel_component_right">약 <strong><%= @m_run[0] %></strong>분</div>
+         <div class="modal_panel_component_left">3. 뛰어서</div> <div class="modal_panel_component_right">약<strong><%= @m_run[0] %></strong>분</div>
          <br>
-         <div class="modal_panel_component_left">4. 걸어서</div> <div class="modal_panel_component_right">약 <strong><%= @m_walk[0] %></strong>분</div>
+         <div class="modal_panel_component_left">4. 걸어서</div> <div class="modal_panel_component_right">약<strong><%= @m_walk[0] %></strong>분</div>
         <!-- 모달 안 값 끝 -->
         
       </div>
@@ -414,13 +505,13 @@
       <div class="panel panel2_1">
 
         <!-- 모달 안 값 시작 -->
-         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
          <br>
-         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약 <strong><%= @m_taxi[1] %></strong>분</div>     
+         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약<strong><%= @m_taxi[1] %></strong>분</div>     
          <br>
-         <div class="modal_panel_component_left">3. 뛰어서</div> <div class="modal_panel_component_right">약 <strong><%= @m_run[1] %></strong>분</div>
+         <div class="modal_panel_component_left">3. 뛰어서</div> <div class="modal_panel_component_right">약<strong><%= @m_run[1] %></strong>분</div>
          <br>
-         <div class="modal_panel_component_left">4. 걸어서</div> <div class="modal_panel_component_right">약 <strong><%= @m_walk[0] %></strong>분</div>
+         <div class="modal_panel_component_left">4. 걸어서</div> <div class="modal_panel_component_right">약<strong><%= @m_walk[0] %></strong>분</div>
         <!-- 모달 안 값 끝 -->
 
       </div>
@@ -428,13 +519,13 @@
       <div class="panel panel3_1"> 
       
         <!-- 모달 안 값 시작 -->
-         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
          <br>
-         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약 <strong><%= @m_taxi[2] %></strong>분</div>     
+         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약<strong><%= @m_taxi[2] %></strong>분</div>     
          <br>
-         <div class="modal_panel_component_left">3. 뛰어서</div> <div class="modal_panel_component_right">약 <strong><%= @m_run[2] %></strong>분</div>
+         <div class="modal_panel_component_left">3. 뛰어서</div> <div class="modal_panel_component_right">약<strong><%= @m_run[2] %></strong>분</div>
          <br>
-         <div class="modal_panel_component_left">4. 걸어서</div> <div class="modal_panel_component_right">약 <strong><%= @m_walk[2] %></strong>분</div>
+         <div class="modal_panel_component_left">4. 걸어서</div> <div class="modal_panel_component_right">약<strong><%= @m_walk[2] %></strong>분</div>
         <!-- 모달 안 값 끝 -->
       
       </div>
@@ -442,13 +533,13 @@
       <div class="panel panel4_1">
         
         <!-- 모달 안 값 시작 -->
-         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
          <br>
-         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약 <strong><%= @m_taxi[3] %></strong>분</div>     
+         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약<strong><%= @m_taxi[3] %></strong>분</div>     
          <br>
-         <div class="modal_panel_component_left">3. 뛰어서</div> <div class="modal_panel_component_right">약 <strong><%= @m_run[3] %></strong>분</div>
+         <div class="modal_panel_component_left">3. 뛰어서</div> <div class="modal_panel_component_right">약<strong><%= @m_run[3] %></strong>분</div>
          <br>
-         <div class="modal_panel_component_left">4. 걸어서</div> <div class="modal_panel_component_right">약 <strong><%= @m_walk[3] %></strong>분</div>
+         <div class="modal_panel_component_left">4. 걸어서</div> <div class="modal_panel_component_right">약<strong><%= @m_walk[3] %></strong>분</div>
         <!-- 모달 안 값 끝 -->
         
       </div>
@@ -481,7 +572,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
          <div class="modal-header" id="no_underline">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="close_size">&times;</span></button>
         <h4 class="modal-title joosang_left">정문(등교)</h4>
       </div>
       <div class="modal-body modal-body-top">
@@ -504,13 +595,13 @@
       <div class="panel panel1_2">
         
         <!-- 모달 안 값 시작 -->
-         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
          <br>
-         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약 <strong><%= @j_taxi[0] %></strong>분</div>     
+         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약<strong><%= @j_taxi[0] %></strong>분</div>     
          <br>
-         <div class="modal_panel_component_left">3. 뛰어서</div> <div class="modal_panel_component_right">약 <strong><%= @j_run[0] %></strong>분</div>
+         <div class="modal_panel_component_left">3. 뛰어서</div> <div class="modal_panel_component_right">약<strong><%= @j_run[0] %></strong>분</div>
          <br>
-         <div class="modal_panel_component_left">4. 걸어서</div> <div class="modal_panel_component_right">약 <strong><%= @j_walk[0] %></strong>분</div>
+         <div class="modal_panel_component_left">4. 걸어서</div> <div class="modal_panel_component_right">약<strong><%= @j_walk[0] %></strong>분</div>
         <!-- 모달 안 값 끝 -->
         
       </div>
@@ -518,13 +609,13 @@
       <div class="panel panel2_2">
 
         <!-- 모달 안 값 시작 -->
-         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
          <br>
-         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약 <strong><%= @j_taxi[1] %></strong>분</div>     
+         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약<strong><%= @j_taxi[1] %></strong>분</div>     
          <br>
-         <div class="modal_panel_component_left">3. 뛰어서</div> <div class="modal_panel_component_right">약 <strong><%= @j_run[1] %></strong>분</div>
+         <div class="modal_panel_component_left">3. 뛰어서</div> <div class="modal_panel_component_right">약<strong><%= @j_run[1] %></strong>분</div>
          <br>
-         <div class="modal_panel_component_left">4. 걸어서</div> <div class="modal_panel_component_right">약 <strong><%= @j_walk[1] %></strong>분</div>
+         <div class="modal_panel_component_left">4. 걸어서</div> <div class="modal_panel_component_right">약<strong><%= @j_walk[1] %></strong>분</div>
         <!-- 모달 안 값 끝 -->
 
       </div>
@@ -532,13 +623,13 @@
       <div class="panel panel3_2"> 
       
         <!-- 모달 안 값 시작 -->
-         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
          <br>
-         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약 <strong><%= @j_taxi[2] %></strong>분</div>     
+         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약<strong><%= @j_taxi[2] %></strong>분</div>     
          <br>
-         <div class="modal_panel_component_left">3. 뛰어서</div> <div class="modal_panel_component_right">약 <strong><%= @j_run[2] %></strong>분</div>
+         <div class="modal_panel_component_left">3. 뛰어서</div> <div class="modal_panel_component_right">약<strong><%= @j_run[2] %></strong>분</div>
          <br>
-         <div class="modal_panel_component_left">4. 걸어서</div> <div class="modal_panel_component_right">약 <strong><%= @j_walk[2] %></strong>분</div>
+         <div class="modal_panel_component_left">4. 걸어서</div> <div class="modal_panel_component_right">약<strong><%= @j_walk[2] %></strong>분</div>
         <!-- 모달 안 값 끝 -->
       
       </div>
@@ -546,13 +637,13 @@
       <div class="panel panel4_2">
         
         <!-- 모달 안 값 시작 -->
-         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">1. 셔틀 <%# n %>분 + 걸어서 <%# n %>분</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
          <br>
-         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약 <strong><%= @j_taxi[3] %></strong>분</div>     
+         <div class="modal_panel_component_left">2. 택시</div> <div class="modal_panel_component_right">약<strong><%= @j_taxi[3] %></strong>분</div>     
          <br>
-         <div class="modal_panel_component_left">3. 뛰어서</div> <div class="modal_panel_component_right">약 <strong><%= @j_run[3] %></strong>분</div>
+         <div class="modal_panel_component_left">3. 뛰어서</div> <div class="modal_panel_component_right">약<strong><%= @j_run[3] %></strong>분</div>
          <br>
-         <div class="modal_panel_component_left">4. 걸어서</div> <div class="modal_panel_component_right">약 <strong><%= @j_walk[3] %></strong>분</div>
+         <div class="modal_panel_component_left">4. 걸어서</div> <div class="modal_panel_component_right">약<strong><%= @j_walk[3] %></strong>분</div>
         <!-- 모달 안 값 끝 -->
         
       </div>
@@ -584,7 +675,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
          <div class="modal-header" id="no_underline">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="close_size">&times;</span></button>
         <h4 class="modal-title joosang_left">600주년 기념관</h4>
       </div>
       <div class="modal-body modal-body-top">
@@ -607,9 +698,9 @@
       <div class="panel panel1_3">
         
         <!-- 모달 안 값 시작 -->
-         <div class="modal_panel_component_left">1. 뛰어서</div> <div class="modal_panel_component_right">약 <strong><%= @shuttle_walk[0] %></strong>분</div>
+         <div class="modal_panel_component_left">1. 뛰어서</div> <div class="modal_panel_component_right">약<strong><%= @shuttle_walk[0] %></strong>분</div>
          <br>
-         <div class="modal_panel_component_left">2. 걸어서</div> <div class="modal_panel_component_right">약 <strong><%= @shuttle_walk[0] * 0.66%></strong>분</div>
+         <div class="modal_panel_component_left">2. 걸어서</div> <div class="modal_panel_component_right">약<strong><%= @shuttle_walk[0] * 0.66%></strong>분</div>
         <!-- 모달 안 값 끝 -->
         
       </div>
@@ -617,9 +708,9 @@
       <div class="panel panel2_3">
 
         <!-- 모달 안 값 시작 -->
-         <div class="modal_panel_component_left">1. 뛰어서</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">1. 뛰어서</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
          <br>
-         <div class="modal_panel_component_left">2. 걸어서</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">2. 걸어서</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
         <!-- 모달 안 값 끝 -->
 
       </div>
@@ -627,9 +718,9 @@
       <div class="panel panel3_3"> 
       
         <!-- 모달 안 값 시작 -->
-         <div class="modal_panel_component_left">1. 뛰어서</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">1. 뛰어서</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
          <br>
-         <div class="modal_panel_component_left">2. 걸어서</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">2. 걸어서</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
         <!-- 모달 안 값 끝 -->
       
       </div>
@@ -637,9 +728,9 @@
       <div class="panel panel4_3">
         
         <!-- 모달 안 값 시작 -->
-         <div class="modal_panel_component_left">1. 뛰어서</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">1. 뛰어서</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
          <br>
-         <div class="modal_panel_component_left">2. 걸어서</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">2. 걸어서</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
         <!-- 모달 안 값 끝 -->
         
       </div>
@@ -671,7 +762,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
          <div class="modal-header" id="no_underline">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="close_size">&times;</span></button>
         <h4 class="modal-title joosang_left">농구장(하차)</h4>
       </div>
       <div class="modal-body modal-body-top">
@@ -694,9 +785,9 @@
       <div class="panel panel1_4">
         
         <!-- 모달 안 값 시작 -->
-         <div class="modal_panel_component_left">1. 뛰어서</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">1. 뛰어서</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
          <br>
-         <div class="modal_panel_component_left">2. 걸어서</div> <div class="modal_panel_component_right">약 <strong><%= @shuttle_walk[0] + 3 %></strong>분</div>
+         <div class="modal_panel_component_left">2. 걸어서</div> <div class="modal_panel_component_right">약<strong><%= @shuttle_walk[0] + 3 %></strong>분</div>
         <!-- 모달 안 값 끝 -->
         
       </div>
@@ -704,9 +795,9 @@
       <div class="panel panel2_4">
 
         <!-- 모달 안 값 시작 -->
-         <div class="modal_panel_component_left">1. 뛰어서</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">1. 뛰어서</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
          <br>
-         <div class="modal_panel_component_left">2. 걸어서</div> <div class="modal_panel_component_right">약 <strong><%= @shuttle_walk[1] %></strong>분</div>
+         <div class="modal_panel_component_left">2. 걸어서</div> <div class="modal_panel_component_right">약<strong><%= @shuttle_walk[1] %></strong>분</div>
         <!-- 모달 안 값 끝 -->
 
       </div>
@@ -714,9 +805,9 @@
       <div class="panel panel3_4"> 
       
         <!-- 모달 안 값 시작 -->
-         <div class="modal_panel_component_left">1. 뛰어서</div> <div class="modal_panel_component_right">약 <strong><%# n분 %>22</strong>분</div>
+         <div class="modal_panel_component_left">1. 뛰어서</div> <div class="modal_panel_component_right">약<strong><%# n분 %>22</strong>분</div>
          <br>
-         <div class="modal_panel_component_left">2. 걸어서</div> <div class="modal_panel_component_right">약 <strong><%= @shuttle_walk[2] %></strong>분</div>
+         <div class="modal_panel_component_left">2. 걸어서</div> <div class="modal_panel_component_right">약<strong><%= @shuttle_walk[2] %></strong>분</div>
         <!-- 모달 안 값 끝 -->
       
       </div>
@@ -724,9 +815,9 @@
       <div class="panel panel4_4">
         
         <!-- 모달 안 값 시작 -->
-         <div class="modal_panel_component_left">1. 뛰어서</div> <div class="modal_panel_component_right">약 <strong><%# n분 %></strong>분</div>
+         <div class="modal_panel_component_left">1. 뛰어서</div> <div class="modal_panel_component_right">약<strong><%# n분 %></strong>분</div>
          <br>
-         <div class="modal_panel_component_left">2. 걸어서</div> <div class="modal_panel_component_right">약 <strong><%= @shuttle_walk[3] %></strong>분</div>
+         <div class="modal_panel_component_left">2. 걸어서</div> <div class="modal_panel_component_right">약<strong><%= @shuttle_walk[3] %></strong>분</div>
         <!-- 모달 안 값 끝 -->
         
       </div>
@@ -758,7 +849,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
          <div class="modal-header" id="no_underline">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="close_size">&times;</span></button>
         <h4 class="modal-title joosang_left">학생회관</h4>
       </div>
       <div class="modal-body modal-body-top">
@@ -767,7 +858,7 @@
         <br>
         <span class="first_bus"><span class="n_minute_later"><%= @expect[1] %>분 후 도착</span>(1st bus)</span><br>
         <span class="second_bus"><span class="n_minute_later">n분 후 도착</span>(1st bus)</span>
-        <p style="text-align: center;">혜화역까지 <span class="expected_time">wow<%# 예상시간 %>분</span> 소요 예상</p>
+        <p style="text-align: center; padding-bottom: 30px">혜화역까지 <span class="expected_time">wow<%# 예상시간 %>분</span> 소요 예상</p>
 
                  
         <!-- 모달 디폴트값 끝 -->
@@ -794,7 +885,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
          <div class="modal-header" id="no_underline">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="close_size">&times;</span></button>
         <h4 class="modal-title joosang_left">정문(하교)</h4>
       </div>
       <div class="modal-body modal-body-top">
@@ -803,7 +894,7 @@
         <br>
         <span class="first_bus"><span class="n_minute_later"><%= @expect[2] %>분 후 도착</span>(1st bus)</span><br>
         <span class="second_bus"><span class="n_minute_later">n분 후 도착</span>(1st bus)</span>
-        <p style="text-align: center;">혜화역까지 <span class="expected_time">wow<%# 예상시간 %>분</span> 소요 예상</p>
+        <p style="text-align: center; padding-bottom: 30px">혜화역까지 <span class="expected_time">wow<%# 예상시간 %>분</span> 소요 예상</p>
 
                  
         <!-- 모달 디폴트값 끝 -->
@@ -829,7 +920,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
         <div class="modal-header" id="no_underline">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><span class="close_size">&times;</span></button>
         <h4 class="modal-title joosang_left">혜화로터리(하차)</h4>
       </div>
       <div class="modal-body modal-body-top">
@@ -838,7 +929,7 @@
         <br>
         <span class="first_bus"><span class="n_minute_later"><%= @expect[6] %>분 후 도착</span>(1st bus)</span><br>
         <span class="second_bus"><span class="n_minute_later">n분 후 도착</span>(1st bus)</span>
-        <p style="text-align: center;">혜화역까지 <span class="expected_time">wow<%# 예상시간 %>분</span> 소요 예상</p>
+        <p style="text-align: center; padding-bottom:30px;">혜화역까지 <span class="expected_time">wow<%# 예상시간 %>분</span> 소요 예상</p>
 
                  
         <!-- 모달 디폴트값 끝 -->
@@ -856,6 +947,38 @@
 <!-- 혜화로터리(하차) 끝 -->
 
 <script src="//code.jquery.com/jquery-2.1.3.min.js"></script>
+
+<!-- 운행종료 스크립트 시작 -->
+
+<script>
+// Get the modal
+var modal = document.getElementById('myModal2');
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn2");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close2")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+    modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+    modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+<!-- 운행종료 스크립트 끝 -->
+
 
 <!-- 혜화역 -->
 
@@ -1058,3 +1181,19 @@
 </script>
 
 <!-- 전체 모달 끝 -->
+
+<!-- info 슬라이드 시작 -->
+
+<script>
+     /* Open the sidenav */
+    function openNav() {
+        document.getElementById("mySidenav").style.width = "100%";
+    }
+    
+    /* Close/hide the sidenav */
+    function closeNav() {
+        document.getElementById("mySidenav").style.width = "0";
+    }                
+</script>
+
+<!-- info 슬라이드 끝 -->
